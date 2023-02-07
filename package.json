@@ -1,0 +1,19 @@
+{
+  "name": "alexa-gpt",
+  "version": "1.0.0",
+  "description": "An Alexa Skill that uses Chat GPT to answer your questions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryanleemoore/alexa-gpt.git"
+  },
+  "author": "Bryan Moore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryanleemoore/alexa-gpt/issues"
+  },
+  "homepage": "https://github.com/bryanleemoore/alexa-gpt#readme"
+}

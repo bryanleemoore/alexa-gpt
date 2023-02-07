@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bryanleemoore/alexa-gpt/issues"
   },
-  "homepage": "https://github.com/bryanleemoore/alexa-gpt#readme"
+  "homepage": "https://github.com/bryanleemoore/alexa-gpt#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
 }

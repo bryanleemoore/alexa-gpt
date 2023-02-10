@@ -10,6 +10,7 @@ export const CancelAndStopIntentHandler = {
         const speakOutput = 'Goodbye!';
         return handlerInput.responseBuilder
             .speak(speakOutput)
+            .withShouldEndSession(true)
             .getResponse();
     }
 };

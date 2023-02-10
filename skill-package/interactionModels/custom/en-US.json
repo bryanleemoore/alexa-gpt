@@ -1,11 +1,13 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "hello world",
+            "invocationName": "alexa gpt",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
-                    "samples": []
+                    "samples": [
+                        "no"
+                    ]
                 },
                 {
                     "name": "AMAZON.HelpIntent",
@@ -29,11 +31,48 @@
                     ]
                 },
                 {
+                    "name": "AskQuestionIntent",
+                    "slots": [
+                        {
+                            "name": "question",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "ask a question",
+                        "question",
+                        "yes"
+                    ]
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
                     "name": "AMAZON.NavigateHomeIntent",
                     "samples": []
                 }
             ],
             "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "AskQuestionIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "question",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
         }
     }
   }

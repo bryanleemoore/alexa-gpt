@@ -5,7 +5,10 @@ const Alexa = require('ask-sdk-core');
 import { CancelAndStopIntentHandler, ErrorHandler,
 HelloWorldIntentHandler, HelpIntentHandler,
 IntentReflectorHandler, LaunchRequestHandler,
-SessionEndedRequestHandler } from "./handlers";
+AskQuestionStartedIntentHandler, AskQuestionCompletedIntentHandler,
+SessionEndedRequestHandler, FallBackIntentHandler } from "./handlers";
+
+
 
 // The SkillBuilder acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
@@ -13,9 +16,13 @@ SessionEndedRequestHandler } from "./handlers";
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
+        AskQuestionStartedIntentHandler,
+        AskQuestionCompletedIntentHandler,
+        CancelAndStopIntentHandler,
+        FallBackIntentHandler,
+        ErrorHandler,
         HelloWorldIntentHandler,
         HelpIntentHandler,
-        CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler, // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
         ) 

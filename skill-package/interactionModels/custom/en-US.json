@@ -1,7 +1,12 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "alexa gpt",
+            "invocationName": "gpt",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "HIGH"
+                }
+            },
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",

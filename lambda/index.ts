@@ -20,7 +20,4 @@ exports.handler = Alexa.SkillBuilders.custom()
         SessionEndedRequestHandler,
         IntentReflectorHandler, 
         ) 
-    .addErrorHandlers(
-        ErrorHandler,
-        )
     .lambda();

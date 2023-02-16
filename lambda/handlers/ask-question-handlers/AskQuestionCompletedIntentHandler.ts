@@ -1,20 +1,24 @@
 import * as Alexa from 'ask-sdk-core'
+import * as API from '../../api'
 
 export const AskQuestionCompletedIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AskQuestionIntent'
-            && handlerInput.requestEnvelope.request.intent.slots.question.value 
+            && handlerInput.requestEnvelope.request.intent.slots.question.value
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         let question = handlerInput.requestEnvelope.request.intent.slots.question.value
 
-        //TODO: API get chat gpt response 
-        //const speakOutput = API.getAnswer(question) + ' Would you like to ask another question?'
-
-        const speakOutput = handlerInput.requestEnvelope.request.intent.slots.question.value + ' Would you like to ask another question?'
+        const speakOutput = await API.getResponse(question)
+        if (speakOutput === false) {
+            return handlerInput.responseBuilder
+                .speak('Sorry, there was a problem with OpenAPI. Please try again at a later time.')
+                .withShouldEndSession(true)
+                .getResponse();
+        }
         return handlerInput.responseBuilder
-            .speak(speakOutput)
+            .speak(speakOutput + ' Would you like to ask another question?')
             .reprompt(speakOutput)
             .getResponse();
     }

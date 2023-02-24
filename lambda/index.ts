@@ -1,5 +1,6 @@
 const Alexa = require('ask-sdk-core');
-const { OpenAIApi } = require("openai");
+import * as AWS from "aws-sdk"
+import { DynamoDbPersistenceAdapter } from "ask-sdk-dynamodb-persistence-adapter";
 import { APIConfiguration } from "./api";
 import { CancelAndStopIntentHandler, ErrorHandler, 
 HelpIntentHandler, IntentReflectorHandler, 
@@ -9,6 +10,12 @@ FallBackIntentHandler } from "./handlers";
 
 
 export const openai = new OpenAIApi(APIConfiguration);
+
+const persistenceAdapter = new DynamoDbPersistenceAdapter({
+    tableName: 'alexa-gpt',
+    createTable: true,
+    dynamoDBClient: new AWS.DynamoDB({ apiVersion: 'latest', region: 'us-east-1' })
+});
 
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
@@ -22,4 +29,5 @@ exports.handler = Alexa.SkillBuilders.custom()
         SessionEndedRequestHandler,
         IntentReflectorHandler, 
         ) 
+    .withPersistenceAdapter(persistenceAdapter)
     .lambda();

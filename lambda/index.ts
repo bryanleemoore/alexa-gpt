@@ -1,6 +1,7 @@
 const Alexa = require('ask-sdk-core');
 import * as AWS from "aws-sdk"
 import { DynamoDbPersistenceAdapter } from "ask-sdk-dynamodb-persistence-adapter";
+import { OpenAIApi } from "openai";
 import { APIConfiguration } from "./api";
 import {
     CancelAndStopIntentHandler, ErrorHandler,

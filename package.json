@@ -35,6 +35,7 @@
   "dependencies": {
     "ask-sdk-core": "^2.12.1",
     "ask-sdk-dynamodb-persistence-adapter": "^2.12.1",
+    "ask-sdk-local-debug": "^1.1.0",
     "aws-sdk": "^2.1322.0",
     "openai": "^3.1.0"
   }

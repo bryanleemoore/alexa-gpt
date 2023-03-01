@@ -9,8 +9,9 @@ export const NameIntentHandler = {
         let userName = handlerInput.requestEnvelope.request.intent.slots.name.value;
         let attributes = {
             'userName': userName,
-            'questionsAsked': 0,
-            'tokensUsed': 0
+            'totalPromptTokensUsed' : 0,
+            'totalCompletionTokensUsed' : 0,
+            'totalTokensUsed' : 0
         };
 
         attributesManager.setPersistentAttributes(attributes);

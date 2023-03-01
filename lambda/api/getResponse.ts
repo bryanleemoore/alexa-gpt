@@ -19,10 +19,10 @@ export const getResponse = async (question) => {
 
     return await openai.createCompletion(params)
         .then((res) => {
-            return res.data.choices[0].text
+            return res.data
         })
         .catch((err) => {
-            console.log('ERROR', err)
-            return false;
+            console.log('error')
+            return err
         })
 }

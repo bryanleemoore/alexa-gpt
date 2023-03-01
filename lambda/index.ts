@@ -29,7 +29,6 @@ exports.handler = Alexa.SkillBuilders.custom()
         FallBackIntentHandler,
         ErrorHandler,
         HelpIntentHandler,
-        SessionEndedRequestHandler,
         IntentReflectorHandler, 
         ) 
     .withPersistenceAdapter(persistenceAdapter)
